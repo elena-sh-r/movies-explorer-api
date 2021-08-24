@@ -2,10 +2,8 @@ const mongoose = require('mongoose');
 const isEmail = require('validator/lib/isEmail');
 const bcrypt = require('bcryptjs');
 const UnauthorizedError = require('../errors/unauthorized-error');
-const { isValidPassword } = require('../utils/validation');
 const {
   INVALID_EMAIL_ERROR_TEXT,
-  INVALID_PASSWORD_ERROR_TEXT,
   INVALID_CREDENTIALS_ERROR_TEXT,
 } = require('../consts');
 
@@ -24,10 +22,6 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 8,
     select: false,
-    validate: {
-      validator: isValidPassword,
-      message: INVALID_PASSWORD_ERROR_TEXT,
-    },
   },
   name: {
     type: String,

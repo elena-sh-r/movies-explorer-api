@@ -5,7 +5,6 @@ const UNAUTHORIZED_ERROR_TEXT = 'Необходима авторизация!';
 const COMMON_ERROR_TEXT = 'На сервере произошла ошибка';
 const INVALID_ADDRESS_ERROR_TEXT = 'Неправильный формат адреса';
 const INVALID_EMAIL_ERROR_TEXT = 'Неправильный формат почты';
-const INVALID_PASSWORD_ERROR_TEXT = 'Неправильный пароль';
 const INVALID_CREDENTIALS_ERROR_TEXT = 'Неправильные почта или пароль';
 const NOT_FOUND_ERROR_TEXT = 'Запрашиваемый ресурс не найден';
 
@@ -17,7 +16,6 @@ module.exports = {
   COMMON_ERROR_TEXT,
   INVALID_ADDRESS_ERROR_TEXT,
   INVALID_EMAIL_ERROR_TEXT,
-  INVALID_PASSWORD_ERROR_TEXT,
   INVALID_CREDENTIALS_ERROR_TEXT,
   NOT_FOUND_ERROR_TEXT,
 };
