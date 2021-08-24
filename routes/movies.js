@@ -30,14 +30,14 @@ router.post('/', celebrate({
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
     thumbnail: Joi.string().required().custom(urlValidationMethod),
-    movieId: Joi.string().required(),
-  }).unknown(true),
+    movieId: Joi.number().required(),
+  }),
 }), createMovie);
 
 router.delete('/:id', celebrate({
   params: Joi.object().keys({
     id: Joi.string().hex().length(24),
-  }).unknown(true),
+  }),
 }), deleteMovie);
 
 module.exports = router;

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-
-const validateUrl = (v) => /^https?:\/\/(www\.)?[a-zA-Z0-9-]*\.[a-zA-Z0-9]*\b([a-zA-Z0-9-._~:/?#[\]@!$&'()*+,;=]*)#?/.test(v);
+const { isValidUrl } = require('../utils/validation');
+const { INVALID_ADDRESS_ERROR_TEXT } = require('../consts');
 
 const movieSchema = new mongoose.Schema({
   country: {
@@ -27,24 +27,24 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: true,
     validate: {
-      validator: validateUrl,
-      message: 'Неправильный формат адреса',
+      validator: isValidUrl,
+      message: INVALID_ADDRESS_ERROR_TEXT,
     },
   },
   trailer: {
     type: String,
     required: true,
     validate: {
-      validator: validateUrl,
-      message: 'Неправильный формат адреса',
+      validator: isValidUrl,
+      message: INVALID_ADDRESS_ERROR_TEXT,
     },
   },
   thumbnail: {
     type: String,
     required: true,
     validate: {
-      validator: validateUrl,
-      message: 'Неправильный формат адреса',
+      validator: isValidUrl,
+      message: INVALID_ADDRESS_ERROR_TEXT,
     },
   },
   owner: {
@@ -52,7 +52,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
   },
   movieId: {
-    type: String,
+    type: Number,
     required: true,
     unique: true,
   },
@@ -64,6 +64,8 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+}, {
+  versionKey: false,
 });
 
 module.exports = mongoose.model('movie', movieSchema);

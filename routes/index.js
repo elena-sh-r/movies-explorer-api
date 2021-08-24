@@ -5,6 +5,8 @@ const {
   login,
   createUser,
 } = require('../controllers/users');
+const NotFoundError = require('../errors/not-found-error');
+const { NOT_FOUND_ERROR_TEXT } = require('../consts');
 
 router.post('/signin', celebrate({
   body: Joi.object().keys({
@@ -24,5 +26,9 @@ router.use(auth);
 
 router.use('/users', require('./users'));
 router.use('/movies', require('./movies'));
+
+router.all('*', () => {
+  throw new NotFoundError(NOT_FOUND_ERROR_TEXT);
+});
 
 module.exports = router;
