@@ -4,7 +4,7 @@ const ForbiddenError = require('../errors/forbidden-error');
 const { NOT_FOUND_MOVIE_ERROR_TEXT, FORBIDDEN_DELETE_ERROR_TEXT } = require('../consts');
 
 module.exports.getMovies = (req, res, next) => {
-  Movie.find({})
+  Movie.find({ owner: req.user._id })
     .then((movies) => res.send({ data: movies }))
     .catch(next);
 };
